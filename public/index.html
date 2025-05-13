@@ -1,4 +1,44 @@
-<!doctype html>
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Please type adminator</title>
+    <style>
+        body {
+            font-family: sans-serif;
+        }
+        #password-form {
+            margin: 50px auto;
+            width: 300px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            text-align: center;
+        }
+        #content-area {
+            display: none; /* 初期状態では非表示 */
+            margin: 20px;
+            padding: 20px;
+            border: 1px solid #eee;
+            border-radius: 5px;
+        }
+        #message {
+            color: red;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div id="password-form">
+        <h1>check your password</h1>
+        <label for="password">パスコード:</label>
+        <input type="password" id="password">
+        <button onclick="checkPassword()">認証</button>
+        <p id="message"></p>
+    </div>
+
+    <div id="content-area">
 <html lang="en">
 <head>
 <title>Shadow</title>
@@ -50,4 +90,24 @@
 <iframe src="" id="web"></iframe>
 
 <footer>Fog Network 2021 | <a href="https://github.com/FogNetwork/Shadow">Github</a> | <a href="https://discord.gg/yk33HZSZkU">Discord</a></footer>
+
+<script>
+        const correctPassword = '2009'; // ★ 実際のパスワードを設定してください
+        const passwordForm = document.getElementById('password-form');
+        const contentArea = document.getElementById('content-area');
+        const messageElement = document.getElementById('message');
+
+        function checkPassword() {
+            const passwordInput = document.getElementById('password');
+            if (passwordInput.value === correctPassword) {
+                passwordForm.style.display = 'none';
+                contentArea.style.display = 'block';
+                messageElement.innerText = '';
+            } else {
+                messageElement.innerText = 'パスコードが間違っています。';
+            }
+            passwordInput.value = ''; // 入力欄をクリア
+        }
+    </script>
 </body>
+</html>
